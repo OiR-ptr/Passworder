@@ -17,39 +17,43 @@ export default class LoginForm extends React.Component {z
 
     render() {
         return(
-            <Paper style={{ textAlign: "center" }}>
-                <TextField name="email" label="Email" value={this.state.email}
-                    onChange={ (e) => { this.setState({email: e.target.value}); }} /><br />
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh" }}>
+                <Paper style={{ textAlign: "center", height: "50%", width: "50%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                    <TextField name="email" label="Email" value={this.state.email}
+                        onChange={ (e) => { this.setState({email: e.target.value}); }} /><br />
+                        
+                    <TextField name="password" label="Password" value={this.state.password} type="password"
+                        onChange={ (e) => { this.setState({password: e.target.value}); }} /><br />
+
+                    <div>
+                        <Button variant="contained" color="primary" icon={ <LockOpen /> } onClick={(e) => {
+                                this.props.signIn(this.state.email, this.state.password);
+                            }
+                        } >SignIn</Button>
+
+                        <Button variant="contained" color="secondary" onClick={(e) => {
+                                this.props.signUp(this.state.email, this.state.password);
+                            }
+                        } >SignUp</Button>
+                    </div>
+
+                    <Snackbar open={(this.props.isAuthSuccess && !this.props.dialogClose)}
+                        message="Authentication succeeded" 
+                        autoHideDuration={2000} 
+                        onClose={ () => {
+                            this.props.gotoContentPage();
+                        }
+                    } />
                     
-                <TextField name="password" label="Password" value={this.state.password} type="password"
-                    onChange={ (e) => { this.setState({password: e.target.value}); }} /><br />
-
-                <Button variant="contained" color="primary" icon={ <LockOpen /> } onClick={(e) => {
-                        this.props.signIn(this.state.email, this.state.password);
-                    }
-                } >SignIn</Button>
-
-                <Button variant="contained" color="secondary" onClick={(e) => {
-                        this.props.signUp(this.state.email, this.state.password);
-                    }
-                } >SignUp</Button>
-
-                <Snackbar open={(this.props.isAuthSuccess && !this.props.dialogClose)}
-                    message="Authentication succeeded" 
-                    autoHideDuration={2000} 
-                    onClose={ () => {
-                        this.props.gotoContentPage();
-                    }
-                } />
-                
-                <Snackbar open={(this.props.isAuthFailed && !this.props.dialogClose)}
-                    message="Authentication failed" 
-                    autoHideDuration={2000}
-                    onClose={ () => {
-                        this.props.closeDialog();
-                    }
-                } />
-            </Paper>
+                    <Snackbar open={(this.props.isAuthFailed && !this.props.dialogClose)}
+                        message="Authentication failed" 
+                        autoHideDuration={2000}
+                        onClose={ () => {
+                            this.props.closeDialog();
+                        }
+                    } />
+                </Paper>
+            </div>
         );
     }
 }

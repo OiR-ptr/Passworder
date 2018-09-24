@@ -1,6 +1,8 @@
 import {connect} from "react-redux";
 import {push} from "react-router-redux";
 
+import firebase from "firebase/app";
+import "firebase/auth";
 import {firebaseApp} from "../firebase/firebaseinstance";
 import LoginForm from "../components/LoginForm";
 import {AuthSucceededEvent, AuthFailedEvent, AuthDone} from "../actions/AuthActions";
@@ -16,7 +18,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         signIn(email, password) {
-            firebaseApp.auth().setPersistence('session')
+            firebaseApp.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
             .then( () => {
                 return firebaseApp.auth().signInWithEmailAndPassword(email, password);
             })
@@ -29,7 +31,7 @@ function mapDispatchToProps(dispatch) {
             });
         },
         signUp(email, password) {
-            firebaseApp.auth().setPersistence('session')
+            firebaseApp.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
             .then( () => {
                 return firebaseApp.auth().createUserWithEmailAndPassword(email, password);
             })

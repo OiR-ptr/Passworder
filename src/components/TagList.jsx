@@ -21,7 +21,13 @@ export default class TagList extends React.Component {
             <GridList cellHeight = {"auto"} cols = {1} style = {{ flexDirection: "column", flexWrap: "nowrap", height: "100%" }}>
                 <GridTile key = "Subheader" cols = {1} rows = {1} >
                     <ListSubheader component="div">REGISTER</ListSubheader>
-                    <GridListTileBar actionIcon = { <IconButton onClick = {(e) => { this.props.addTag(this.props.tagID + 1) }}><PlaylistAdd /></IconButton> }/>
+                    <GridListTileBar actionIcon = { 
+                        <IconButton onClick = { (e) => { 
+                            this.props.addTag(this.props.tagID + 1) 
+                        }} >
+                            <PlaylistAdd />
+                        </IconButton> 
+                    } />
                 </GridTile>
                 {list}
             </GridList>

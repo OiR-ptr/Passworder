@@ -14,8 +14,11 @@ function mapDispatchToProps(dispatch) {
     return {
         loadTags() {
             if (firebaseApp.auth().currentUser) {
+                var currentUser = firebaseApp.auth().currentUser;
+                console.log(currentUser);
+
                 var tagsRef = firebaseApp.database().ref("tags");
-            
+
                 tagsRef.off();
                 tagsRef.once("value", 
                     (dataSnapShot) => {
