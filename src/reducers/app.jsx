@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer, applyMiddleware(middleware));
 
-export default class Test extends React.Component {
+export default class RootComponent extends React.Component {
     render() {
         return (
             <Provider store={store}>                
