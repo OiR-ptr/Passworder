@@ -1,5 +1,5 @@
 import jsSHA from "jssha";
-import Base91 from "node-base91";
+import Base91 from "../lib/node-base91";
 
 import {GENERATE_PASS, GENERATE_PASS_DONE} from "../actions/Actions";
 
