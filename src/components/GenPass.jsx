@@ -15,10 +15,10 @@ export default class GenPass extends React.Component {
     render() {
         return (
             <Paper>
-                <Paper style={{ float: "left", width: "30%" }}>
+                <Paper style={{ float: "left", width: "30%", height: "90vh" }}>
                     { this.props.isLoaded ? <TagList /> : <CircularProgress size={40} thickness={5} /> }
                 </Paper>
-                <Paper style={{ float: "left", width: "70%" }}>
+                <Paper style={{ float: "left", width: "70%", height: "90vh" }}>
                     <MainContent />
                 </Paper>
                 <PasswordDialog />

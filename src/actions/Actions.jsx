@@ -42,10 +42,12 @@ export function saveTagEvent(tag) {
     }
 }
 
-export function generatePasswordEvent(seed) {
+export function generatePasswordEvent(seed, emoji, masterKey) {
     return {
         type: GENERATE_PASS,
+        master: masterKey,
         seed: seed,
+        seed_emoji: emoji,
     };
 }
 

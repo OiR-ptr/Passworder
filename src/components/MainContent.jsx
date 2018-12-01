@@ -8,16 +8,9 @@ import Divider from "@material-ui/core/Divider";
 import Done from "@material-ui/icons/Done";
 import VpnKey from "@material-ui/icons/VpnKey";
 
-const renderTextField = ({
-    input,
-    label,
-    ...custom
-  }) =>
-    <TextField
-      label={label}
-      {...input}
-      {...custom}
-    />
+const renderTextField = ({input, label, ...custom}) => {
+    return <TextField label={label} {...input} {...custom} />
+}
 
 export default class MainContent extends React.Component {
     render() {
@@ -46,6 +39,7 @@ export default class MainContent extends React.Component {
                     label="Seed"
                     component={renderTextField}
                 /><br />
+                <TextField label="master password" /><br />
 
                 <Button 
                     type="submit"
